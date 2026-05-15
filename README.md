@@ -409,6 +409,78 @@ ros2 launch nav2_bringup bringup_launch.py \
 
 ## 语音交互
 
+### 模块概述
+语音模块实现了从原始语音输入到结构化指令输出的全流程处理。相比传统的关键词匹配，本模块引入了 **LLM**来处理口语中的转折、修正和模糊语义。
+
+### 核心特性
+- **本地 ASR**：基于 `faster-whisper` (Base 模型) 实现毫秒级本地语音转文字，支持中英混输。
+- **智能意图解析**：通过 DeepSeek API 自动纠正逻辑冲突，并提取目的地。
+- **自然语音反馈**：调用微软 `edge-tts` 神经网络语音。
+- **语义地图映射**：自动将语音中的地点映射为系统预定义的 `room_id`。
+- **自动容错**：无法识别指令时，系统默认引导机器人至 `info_desk` (咨询台)。
+
+## 技术架构
+
+1. **语音采集与转录 (ASR)**：读取音频流 -> Whisper 模型转文字。
+2. **语义处理 (NLU)**：文字 -> DeepSeek API (JSON 提取) -> 目的地过滤。
+3. **指令发布 (ROS 2)**：封装为标准化 JSON -> 发布至 `/voice_to_nav`。
+4. **语音播报 (TTS)**：导航反馈 -> 生成音频 -> 本地播放。
+
+### 环境配置
+
+1. 依赖安装
+在运行前，请确保系统中已安装以下必要组件：
+```bash
+pip install faster-whisper edge-tts openai pyaudio
+sudo apt install mpg123 -y
+```
+2. API 密钥设置
+为保证安全，本项目采用环境变量管理 API Key。请在 ~/.bashrc 中添加：
+```bash
+export DEEPSEEK_API_KEY="你的_DEEPSEEK_API_KEY"
+source ~/.bashrc
+```
+
+### 运行指南
+编译与启动
+```bash
+# 进入工作空间
+cd ~/hospital_ws
+
+# 编译语音模块
+colcon build --packages-select voice_control
+
+# 环境生效
+source install/setup.bash
+
+# 运行语音交互节点
+ros2 run voice_control voice_node
+```
+
+### 接口规范
+本节点向导航系统输出结构化的 JSON 字符串指令。
+话题名称: /voice_to_nav
+消息类型: std_msgs/String
+
+1. 指令数据格式
+JSON
+{
+  "action": "navigation",
+  "destination": "room_102",
+  "raw_text": "我想去101，不对，好像是102病房",
+  "timestamp": 260514160747
+}
+
+2. 目的地列表 (Destination Mapping)
+
+| 提取 ID (destination)           | 说明            |
+| ------------------------------- | ----------------|
+| room_101                        | 101病房         |
+| room_102                        | 102病房         |
+| info_desk                       | 咨询台          |
+| lab_01                          | 化验室01        |
+| pharmacy                        | 药房            |
+
 
 ---
 
