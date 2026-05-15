@@ -1,9 +1,0 @@
-feat: 添加医院机器人仿真项目
-
-- 迁移 README 为中文，添加系统架构图和数据流说明
-- 添加 gazebo_map_creator 地图生成插件
-- 添加 turtlebot3_gazebo_local 仿真配置
-- 添加 2D/3D 地图文件 (pgm, pcd, bt, yaml)
-- 添加 .gitignore 排除 build/install/log 产物
-
-Co-authored-by: Cursor <cursoragent@cursor.com>
