@@ -473,6 +473,7 @@ ros2 run voice_control voice_node
 ```
 
 2. 目的地列表 (Destination Mapping)
+可在此基础上添加修改ROOM_MAP
 
 | 提取 ID (destination)           | 说明            |
 | ------------------------------- | ----------------|
@@ -481,6 +482,7 @@ ros2 run voice_control voice_node
 | info_desk                       | 咨询台          |
 | lab_01                          | 化验室01        |
 | pharmacy                        | 药房            |
+| emergency                       | 急诊            |
 
 
 ---
