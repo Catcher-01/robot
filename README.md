@@ -19,6 +19,7 @@ License
 - [快速开始](#快速开始)
 - [地图生成](#地图生成)
 - [机器人导航](#机器人导航)
+- [语音交互](#语音交互)
 - [配置说明](#配置说明)
 - [常见问题](#常见问题)
 - [进阶用法](#进阶用法)
@@ -177,7 +178,13 @@ hospital_ws/                     # 主 ROS 2 工作空间
 │   │   ├── launch/              # 启动文件
 │   │   ├── urdf/                # 机器人描述
 │   │   └── worlds/              # 测试环境
+│   ├── voice_control/             # 语音交互模块
+│   │   ├── voice_control/         # 核心源码 (voice_node.py)
+│   │   ├── package.xml            # 依赖声明
+│   │   └── setup.py               # 安装配置
 │   └── turtlebot3_models/       # TurtleBot3 模型定义
+│   
+│ 
 ├── build/                       # 构建产物
 ├── install/                    # 安装产物
 └── log/                        # 构建日志
@@ -396,6 +403,11 @@ ros2 launch nav2_bringup bringup_launch.py \
 | `turtlebot3_world.launch.py`    | 默认 TurtleBot3 世界 |
 | `spawn_turtlebot3.launch.py`    | 仅部署机器人           |
 | `multi_robot.launch.py`         | 多机器人模式           |
+
+
+---
+
+## 语音交互
 
 
 ---
