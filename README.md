@@ -463,13 +463,14 @@ ros2 run voice_control voice_node
 消息类型: std_msgs/String
 
 1. 指令数据格式
-JSON
+```JSON
 {
   "action": "navigation",
-  "destination": "room_102",
-  "raw_text": "我想去101，不对，好像是102病房",
-  "timestamp": 260514160747
+  "destination": "<分析出来的目的地id，如room_102>",
+  "raw_text": "<系统识别出来的完整文字，如“101，不对，102病房在哪里”>",
+  "timestamp": <时间戳(YYMMDDhhmmss)，如2605151345>
 }
+```
 
 2. 目的地列表 (Destination Mapping)
 
