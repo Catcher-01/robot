@@ -419,7 +419,7 @@ ros2 launch nav2_bringup bringup_launch.py \
 - **语义地图映射**：自动将语音中的地点映射为系统预定义的 `room_id`。
 - **自动容错**：无法识别指令时，系统默认引导机器人至 `info_desk` (咨询台)。
 
-## 技术架构
+### 技术架构
 
 1. **语音采集与转录 (ASR)**：读取音频流 -> Whisper 模型转文字。
 2. **语义处理 (NLU)**：文字 -> DeepSeek API (JSON 提取) -> 目的地过滤。
