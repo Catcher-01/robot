@@ -13,10 +13,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='root',
-    maintainer_email='root@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='hyh',
+    maintainer_email='hyh@robot.local',
+    description='语音导航控制：语音识别 → 意图解析 → Nav2 导航',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',
@@ -24,7 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-	    'voice_node = voice_control.voice_node:main',
+            'voice_node = voice_control.voice_node:main',
+            'nav_controller = voice_control.nav_controller:main',
         ],
     },
 )

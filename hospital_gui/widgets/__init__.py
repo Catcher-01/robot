@@ -1,0 +1,2 @@
+from hospital_gui.widgets.map_canvas import MapCanvas
+from hospital_gui.widgets.emergency_button import EmergencyButton

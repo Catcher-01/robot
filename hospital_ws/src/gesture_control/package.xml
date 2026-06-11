@@ -1,22 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>voice_control</name>
+  <name>gesture_control</name>
   <version>0.0.0</version>
-  <description>语音导航控制：语音识别 → 意图解析 → Nav2 导航</description>
-  <maintainer email="hyh@robot.local">hyh</maintainer>
-  <license>MIT</license>
+  <description>TODO: Package description</description>
+  <maintainer email="root@todo.todo">root</maintainer>
+  <license>TODO: License declaration</license>
 
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
-  <depend>nav2_msgs</depend>
-  <depend>geometry_msgs</depend>
-
-  <exec_depend>faster-whisper</exec_depend>
-  <exec_depend>edge-tts</exec_depend>
-  <exec_depend>openai</exec_depend>
-  <exec_depend>pyaudio</exec_depend>
-  <exec_depend>mpg123</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

@@ -1,0 +1,8 @@
+PyQt5>=5.15
+PyYAML
+numpy
+opencv-python-headless
+Pillow
+edge-tts
+rclpy
+requests
